@@ -1,37 +1,91 @@
 # say-common-oss
 
-#### 介绍
-aws-s3 通用存储操作 支持所有兼容s3协议的云存储，如minio、oss、cos等
+# 1. 介绍
 
-#### 软件架构
+通用存储操作 支持所有兼容amazon-s3协议的云存储，如minio、oss、cos等
+
+# 2. 软件架构
+
 软件架构说明
 
+# 3. 使用说明
 
-#### 安装教程
+## 3.1 推到私仓
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+```bash
+mvn clean deploy
+```
 
-#### 使用说明
+## 3.2 引入本包依赖
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+```xml
 
-#### 参与贡献
+<dependency>
+  <groupId>com.say.common</groupId>
+  <artifactId>say-common-oss</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+## 3.3 使用模板中实现的aws协议方法，调用对应存储
 
+类上：@AllArgsConstructor
+private final FileTemplate template;
 
-#### 特技
+## 3.4 配置文件，设置开关、对应存储相关配置，详细看下面
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+启动oss功能
+
+```yaml
+file:
+  oss:
+    enable: true
+```
+
+## 3.5 配置相关
+
+### 3.5.1 阿里云OSS
+
+  ```yaml
+file:
+  oss:
+    enable: true
+    endpoint: https://xxx.oss-cn-beijing.aliyuncs.com # 对象存储服务的URL
+    bucketName: # 因为url本身代表了存储桶，这里空着不用配置
+    accessKey: # 账户ak
+    secretKey: # 账户sk
+```
+
+### 3.5.2 腾讯云COS
+
+```yaml
+file:
+oss:
+  enable: true
+  endpoint: https://xxx.cos.ap-beijing.myqcloud.com # 对象存储服务的URL
+  bucketName: # 因为url本身代表了存储桶，这里空着不用配置
+  accessKey: # 账户ak
+  secretKey: # 账户sk
+```
+
+### 3.5.3 华为云
+
+### 3.5.4 minio
+
+```yaml
+file:
+  oss:
+    enable: true
+    endpoint: http://ip:port # 对象存储服务的URL
+    bucketName: bucketName
+    accessKey: xxx
+    secretKey: xxx
+```
+
+# 4. 参与贡献
+
+1. Fork 本仓库
+2. 新建 Feat_xxx 分支
+3. 提交代码
+4. 新建 Pull Request
+
