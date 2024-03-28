@@ -46,7 +46,7 @@ file:
 
 ### 3.5.1 阿里云OSS
 
-  ```yaml
+```yaml
 file:
   oss:
     enable: true
