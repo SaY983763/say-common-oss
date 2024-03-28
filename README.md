@@ -60,15 +60,26 @@ file:
 
 ```yaml
 file:
-oss:
-  enable: true
-  endpoint: https://xxx.cos.ap-beijing.myqcloud.com # 对象存储服务的URL
-  bucketName: # 因为url本身代表了存储桶，这里空着不用配置
-  accessKey: # 账户ak
-  secretKey: # 账户sk
+  oss:
+    enable: true
+    endpoint: https://xxx.cos.ap-beijing.myqcloud.com # 对象存储服务的URL
+    bucketName: # 因为url本身代表了存储桶，这里空着不用配置
+    accessKey: # 账户ak
+    secretKey: # 账户sk
 ```
 
-### 3.5.3 华为云
+### 3.5.3 华为云OBS
+
+
+```yaml
+file:
+  oss:
+    enable: true
+    endpoint: https://xxx.obs.cn-north-4.myhuaweicloud.com # 对象存储服务的URL
+    bucketName: # 因为url本身代表了存储桶，这里空着不用配置
+    accessKey: # 账户ak
+    secretKey: # 账户sk
+```
 
 ### 3.5.4 minio
 
